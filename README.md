@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipe Crafts Studio | Handcrafted Decor</title>
+    <style>
+        /* Base Styling & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
+        }
+
+        body {
+            background-color: #fcfbfa;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 10%;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eae6e1;
+        }
+
+        .logo {
+            font-size: 24px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555555;
+            margin-left: 25px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #bfa38a; /* Soft gold accent */
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1600') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 300;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #ffffff;
+            color: #333333;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            transition: all 0.3s ease;
+            border: 1px solid #ffffff;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #ffffff;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #ffffff;
+            border-color: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: transparent;
+            color: #25D366;
+        }
+
+        /* Category Grid Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 30px;
+            font-size: 28px;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .category-card {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #f4ede4;
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            max-height: 450px;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .about-text p {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #666666;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #eae6e1;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13px;
+            color: #888888;
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: #bfa38a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .hero h1 { font-size: 32px; }
+            .btn-container { flex-direction: column; width: 100%; max-width: 300px; }
+            .categories { flex-direction: column; }
+            .about-section { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">Pipe Crafts Studio</div>
+        <nav>
+            <a href="#">Shop All</a>
+            <a href="#">Flowers</a>
+            <a href="#">Decent Accents</a>
+            <a href="https://instagram.com/pipecraftsstudio" target="_blank">Instagram</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1>Elegance, Handcrafted for Your Space</h1>
+        <p>Discover a curated collection of premium handmade floral arrangements and timeless decor designed to bring warmth to your home.</p>
+        <div class="btn-container">
+            <a href="#" class="btn">Shop Collection</a>
+            <!-- WhatsApp Live Link -->
+            <a href="https://wa.me/923263291318?text=Hello!%20I%20am%20interested%20in%20your%20handmade%20decorations." target="_blank" class="btn btn-whatsapp">Message WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <h2 class="section-title">Explore the Collections</h2>
+    <section class="categories">
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=800" alt="Handmade Flowers">
+            <div class="category-label">Handmade Flowers</div>
+        </div>
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800" alt="Decent Accents">
+            <div class="category-label">Decent Accents</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <img class="about-img" src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800" alt="Artisan at work">
+        <div class="about-text">
+            <h2>Made by Hand, Styled with Heart</h2>
+            <p>Welcome to Pipe Crafts Studio. Every floral arrangement and decor piece is thoughtfully crafted by hand, ensuring that no two items are exactly alike. We believe that true luxury lies in the details.</p>
+            <p>By blending artistic craftsmanship with timeless, minimalist designs, we create unique accents that elevate your everyday living spaces.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Follow us on Instagram: <a href="https://instagram.com/pipecraftsstudio" target="_blank">@pipecraftsstudio</a></p>
+        <p>&copy; 2026 Pipe Crafts Studio. Crafted beautifully for your home.</p>
+    </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipe Crafts Studio | Handcrafted Decor</title>
+    <style>
+        /* Base Styling & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
+        }
+
+        body {
+            background-color: #fcfbfa;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 10%;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eae6e1;
+        }
+
+        .logo {
+            font-size: 24px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555555;
+            margin-left: 25px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #bfa38a; /* Soft gold accent */
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1600') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 300;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #ffffff;
+            color: #333333;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            transition: all 0.3s ease;
+            border: 1px solid #ffffff;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #ffffff;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #ffffff;
+            border-color: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: transparent;
+            color: #25D366;
+        }
+
+        /* Category Grid Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 30px;
+            font-size: 28px;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .category-card {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #f4ede4;
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            max-height: 450px;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .about-text p {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #666666;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #eae6e1;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13px;
+            color: #888888;
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: #bfa38a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .hero h1 { font-size: 32px; }
+            .btn-container { flex-direction: column; width: 100%; max-width: 300px; }
+            .categories { flex-direction: column; }
+            .about-section { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">Pipe Crafts Studio</div>
+        <nav>
+            <a href="#">Shop All</a>
+            <a href="#">Flowers</a>
+            <a href="#">Decent Accents</a>
+            <a href="https://instagram.com/pipecraftsstudio" target="_blank">Instagram</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1>Elegance, Handcrafted for Your Space</h1>
+        <p>Discover a curated collection of premium handmade floral arrangements and timeless decor designed to bring warmth to your home.</p>
+        <div class="btn-container">
+            <a href="#" class="btn">Shop Collection</a>
+            <!-- WhatsApp Live Link -->
+            <a href="https://wa.me/923263291318?text=Hello!%20I%20am%20interested%20in%20your%20handmade%20decorations." target="_blank" class="btn btn-whatsapp">Message WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <h2 class="section-title">Explore the Collections</h2>
+    <section class="categories">
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=800" alt="Handmade Flowers">
+            <div class="category-label">Handmade Flowers</div>
+        </div>
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800" alt="Decent Accents">
+            <div class="category-label">Decent Accents</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <img class="about-img" src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800" alt="Artisan at work">
+        <div class="about-text">
+            <h2>Made by Hand, Styled with Heart</h2>
+            <p>Welcome to Pipe Crafts Studio. Every floral arrangement and decor piece is thoughtfully crafted by hand, ensuring that no two items are exactly alike. We believe that true luxury lies in the details.</p>
+            <p>By blending artistic craftsmanship with timeless, minimalist designs, we create unique accents that elevate your everyday living spaces.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Follow us on Instagram: <a href="https://instagram.com/pipecraftsstudio" target="_blank">@pipecraftsstudio</a></p>
+        <p>&copy; 2026 Pipe Crafts Studio. Crafted beautifully for your home.</p>
+    </footer>
+
+</body>
+</html>
